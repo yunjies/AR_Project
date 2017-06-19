@@ -35,3 +35,4 @@ C:\Users\1\Documents\AR_Project\Temp\bin\Debug\UnityEngine.VR.xml
 C:\Users\1\Documents\AR_Project\obj\Debug\Assembly-CSharp.dll
 C:\Users\1\Documents\AR_Project\obj\Debug\Assembly-CSharp.pdb
 C:\Users\1\Documents\AR_Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\1\Documents\AR_Project\Temp\bin\Debug\OpenCvSharp.Extensions.dll
