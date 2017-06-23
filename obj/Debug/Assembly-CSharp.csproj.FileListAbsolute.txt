@@ -1,9 +1,11 @@
+C:\Users\1\Documents\AR_Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\Assembly-CSharp.dll
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\Assembly-CSharp.pdb
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\nunit.framework.dll
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\OpenCvSharp.Blob.dll
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\OpenCvSharp.CPlusPlus.dll
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\OpenCvSharp.dll
+C:\Users\1\Documents\AR_Project\Temp\bin\Debug\OpenCvSharp.Extensions.dll
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\OpenCvSharp.UserInterface.dll
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\UnityEditor.dll
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\UnityEditor.iOS.Extensions.Common.dll
@@ -34,5 +36,3 @@ C:\Users\1\Documents\AR_Project\Temp\bin\Debug\UnityEngine.HoloLens.xml
 C:\Users\1\Documents\AR_Project\Temp\bin\Debug\UnityEngine.VR.xml
 C:\Users\1\Documents\AR_Project\obj\Debug\Assembly-CSharp.dll
 C:\Users\1\Documents\AR_Project\obj\Debug\Assembly-CSharp.pdb
-C:\Users\1\Documents\AR_Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
-C:\Users\1\Documents\AR_Project\Temp\bin\Debug\OpenCvSharp.Extensions.dll

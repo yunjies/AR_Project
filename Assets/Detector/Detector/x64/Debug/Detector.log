@@ -1,0 +1,39 @@
+﻿  MarkerDetector.cpp
+c:\opencv\build\include\opencv2\core\mat.hpp(2586): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note: see declaration of 'fopen'
+c:\opencv\build\include\opencv2\imgproc.hpp(592): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\users\1\documents\visual studio 2017\projects\detector\detector\markerdetector.cpp(50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\1\documents\visual studio 2017\projects\detector\detector\markerdetector.cpp(51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\1\documents\visual studio 2017\projects\detector\detector\markerdetector.cpp(52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\1\documents\visual studio 2017\projects\detector\detector\markerdetector.cpp(117): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\1\documents\visual studio 2017\projects\detector\detector\markerdetector.cpp(167): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\1\documents\visual studio 2017\projects\detector\detector\markerdetector.cpp(178): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\utility(189): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  c:\users\1\documents\visual studio 2017\projects\detector\detector\markerdetector.cpp(216): note: see reference to function template instantiation 'std::pair<int,int>::pair<size_t&,size_t&,void,0>(_Other1,_Other2) noexcept' being compiled
+          with
+          [
+              _Other1=size_t &,
+              _Other2=size_t &
+          ]
+  c:\users\1\documents\visual studio 2017\projects\detector\detector\markerdetector.cpp(216): note: see reference to function template instantiation 'std::pair<int,int>::pair<size_t&,size_t&,void,0>(_Other1,_Other2) noexcept' being compiled
+          with
+          [
+              _Other1=size_t &,
+              _Other2=size_t &
+          ]
+  Detector.cpp
+c:\opencv\build\include\opencv2\core\mat.hpp(2586): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note: see declaration of 'fopen'
+c:\opencv\build\include\opencv2\imgproc.hpp(592): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+  Generating Code...
+     Creating library C:\Users\1\Documents\Visual Studio 2017\Projects\Detector\x64\Debug\Detector.lib and object C:\Users\1\Documents\Visual Studio 2017\Projects\Detector\x64\Debug\Detector.exp
+  Detector.vcxproj -> C:\Users\1\Documents\Visual Studio 2017\Projects\Detector\x64\Debug\Detector.dll
+  Detector.vcxproj -> C:\Users\1\Documents\Visual Studio 2017\Projects\Detector\x64\Debug\Detector.pdb (Partial PDB)

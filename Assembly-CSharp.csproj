@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\CaptureScript.cs" />
+     <Compile Include="Assets\Script\GeometryTypes.cs" />
+     <Compile Include="Assets\Script\Main.cs" />
      <Compile Include="Assets\Script\cam.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -69,17 +71,17 @@
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
- <Reference Include="OpenCvSharp.CPlusPlus">
- <HintPath>C:/Users/1/Documents/AR_Project/Assets/Plugin/OpenCvSharp.CPlusPlus.dll</HintPath>
- </Reference>
- <Reference Include="OpenCvSharp.Extensions">
- <HintPath>C:/Users/1/Documents/AR_Project/Assets/Plugin/OpenCvSharp.Extensions.dll</HintPath>
- </Reference>
  <Reference Include="OpenCvSharp.Blob">
  <HintPath>C:/Users/1/Documents/AR_Project/Assets/Plugin/OpenCvSharp.Blob.dll</HintPath>
  </Reference>
+ <Reference Include="OpenCvSharp.CPlusPlus">
+ <HintPath>C:/Users/1/Documents/AR_Project/Assets/Plugin/OpenCvSharp.CPlusPlus.dll</HintPath>
+ </Reference>
  <Reference Include="OpenCvSharp">
  <HintPath>C:/Users/1/Documents/AR_Project/Assets/Plugin/OpenCvSharp.dll</HintPath>
+ </Reference>
+ <Reference Include="OpenCvSharp.Extensions">
+ <HintPath>C:/Users/1/Documents/AR_Project/Assets/Plugin/OpenCvSharp.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="OpenCvSharp.UserInterface">
  <HintPath>C:/Users/1/Documents/AR_Project/Assets/Plugin/OpenCvSharp.UserInterface.dll</HintPath>
