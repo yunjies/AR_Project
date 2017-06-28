@@ -1,11 +1,8 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\CaptureScript.cs">
+﻿<Properties StartupItem="AR_Project.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Object.cs">
     <Files>
-      <File FileName="..\..\Desktop\AR-Unity-master\AR-Unity\Assets\Background.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Main.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\cam.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\CaptureScript.cs" Line="74" Column="4" />
+      <File FileName="Assets\Script\Object.cs" Line="18" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
