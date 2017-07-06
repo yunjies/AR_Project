@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class MarkerBasedAR : MonoBehaviour {
 
@@ -38,7 +39,7 @@ public class MarkerBasedAR : MonoBehaviour {
             m_MarkerCentralPoints.Clear();
         }
 
-        Reader.Read(ref matrixList, ref markers, ref m_MarkerCentralPoints);
+        //Reader.Read(ref matrixList, ref markerids);
 
         for (int i = 0; i < matrixList.Count; i++)
         {
@@ -63,8 +64,7 @@ public class MarkerBasedAR : MonoBehaviour {
         }
         if (check)
         {
-            Vector3 wv = GetComponent<Camera>().ScreenToWorldPoint(centralPoint);
-            Transform m_MarkerObject = Instantiate(m_MarkerModelDict[ID], wv, Quaternion.identity);
+            Transform m_MarkerObject = Instantiate(m_MarkerModelDict[ID], Vector3.zero, Quaternion.identity);
             Matrix4x4 ARM = NewMethod(matrix, m_MarkerObject);
             SetTransform.SetTransformFromMatrix(m_MarkerObject, ref ARM);
             m_MarkerObjectList.Add(m_MarkerObject);
@@ -75,7 +75,8 @@ public class MarkerBasedAR : MonoBehaviour {
 
     private Matrix4x4 NewMethod(Matrix4x4 matrix, Transform m_MarkerObject)
     {
-        return m_MarkerObject.localToWorldMatrix * (invertZM * matrix.inverse);
+        return matrix * m_MarkerObject.localToWorldMatrix;
+        //return m_MarkerObject.localToWorldMatrix * invertYM * matrix * invertZM;
     }
 
     public void DestroyMakerObject()
