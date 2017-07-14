@@ -6,21 +6,21 @@ using System.IO;
 
 public class Reader : MonoBehaviour {
 
-    //private static Vector3 _screenV;
-    //private static GameObject plane;
+   // private static Vector3 _screenV;
+    //private static GameObject quad;
     //private static int imWidth = 640;
     //private static int imHeight = 480;
 
     // Use this for initialization
     void Start()
     {
-       // plane = GameObject.Find("Plane");
+        //quad = GameObject.Find("Quad");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //_screenV = GetComponent<Camera>().WorldToScreenPoint(plane.GetComponent<Transform>().position);
+        //_screenV = GetComponent<Camera>().WorldToScreenPoint(quad.GetComponent<Transform>().position);
     }
 
     //public static void Read(ref List<Matrix4x4> matrixList,  ref List<KeyValuePair<int, List<KeyValuePair<float, float>>>> markers, ref List<Vector3> m_MarkerCentralPoints)
@@ -63,7 +63,8 @@ public class Reader : MonoBehaviour {
     //        }
     //    }
 
-    public static void Read(ref List<Matrix4x4> matrixList, ref List<int> markerids, ref string markerData)
+
+    public static void Read(ref List<Matrix4x4> matrixList, ref List<int> markerids, ref string markerData, ref List<Vector3> position)
     {
         matrixList.Clear();
         markerids.Clear();
@@ -77,13 +78,15 @@ public class Reader : MonoBehaviour {
             int id = int.Parse(num[0]);
             markerids.Add(id);
 
+            position.Add(new Vector3(float.Parse(num[1]), float.Parse(num[2]), 5));
+
             //Debug.Log(num[0]);
 
             Matrix4x4 matrix = new Matrix4x4();
-            Vector4 v0 = new Vector4(float.Parse(num[1]), float.Parse(num[2]), float.Parse(num[3]), float.Parse(num[4]));
-            Vector4 v1 = new Vector4(float.Parse(num[5]), float.Parse(num[6]), float.Parse(num[7]), float.Parse(num[8]));
-            Vector4 v2 = new Vector4(float.Parse(num[9]), float.Parse(num[10]), float.Parse(num[11]), float.Parse(num[12]));
-            Vector4 v3 = new Vector4(float.Parse(num[13]), float.Parse(num[14]), float.Parse(num[15]), float.Parse(num[16]));
+            Vector4 v0 = new Vector4(float.Parse(num[3]), float.Parse(num[4]), float.Parse(num[5]), float.Parse(num[6]));
+            Vector4 v1 = new Vector4(float.Parse(num[7]), float.Parse(num[8]), float.Parse(num[9]), float.Parse(num[10]));
+            Vector4 v2 = new Vector4(float.Parse(num[11]), float.Parse(num[12]), float.Parse(num[13]), float.Parse(num[14]));
+            Vector4 v3 = new Vector4(float.Parse(num[15]), float.Parse(num[16]), float.Parse(num[17]), float.Parse(num[18]));
             matrix.SetRow(0, v0);
             matrix.SetRow(1, v1);
             matrix.SetRow(2, v2);

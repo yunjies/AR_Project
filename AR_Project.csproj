@@ -85,9 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\CamSetup.cs" />
-    <Compile Include="Assets\Script\MarkerBasedAR.cs" />
     <Compile Include="Assets\Script\Reader.cs" />
     <Compile Include="Assets\Script\SetTransform.cs" />
+    <Compile Include="Assets\Script\TextureScale.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fruit Pack\README.txt" />

@@ -91,11 +91,6 @@ public class SetTransform : MonoBehaviour {
     /// </returns>
     public static Vector3 ExtractTranslationFromMatrix(ref Matrix4x4 matrix)
     {
-        //Vector3 translate;
-        //translate.x = matrix.m03;
-        //translate.y = matrix.m13;
-        //translate.z = matrix.m23;
-        
         return matrix.GetColumn(3);
     }
 
@@ -149,10 +144,9 @@ public class SetTransform : MonoBehaviour {
     /// to improve performance; no changes will be made to it.</param>
     public static void SetTransformFromMatrix(Transform transform, ref Matrix4x4 matrix)
     {
-        transform.localPosition = ExtractTranslationFromMatrix(ref matrix);
+        //transform.localPosition = ExtractTranslationFromMatrix(ref matrix);
         transform.localRotation = ExtractRotationFromMatrix(ref matrix);
         transform.localScale = ExtractScaleFromMatrix(ref matrix);
-
     }
 
 }
