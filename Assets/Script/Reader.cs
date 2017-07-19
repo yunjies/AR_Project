@@ -64,7 +64,8 @@ public class Reader : MonoBehaviour {
     //    }
 
 
-    public static void Read(ref List<Matrix4x4> matrixList, ref List<int> markerids, ref string markerData, ref List<Vector3> position)
+    public static void Read(ref List<Matrix4x4> matrixList, ref List<int> markerids, ref string markerData, 
+        ref List<Vector3> position, float z, ref float scale)
     {
         matrixList.Clear();
         markerids.Clear();
@@ -78,8 +79,8 @@ public class Reader : MonoBehaviour {
             int id = int.Parse(num[0]);
             markerids.Add(id);
 
-            position.Add(new Vector3(float.Parse(num[1]), float.Parse(num[2]), 5));
-
+            //position.Add(new Vector3(float.Parse(num[1]), float.Parse(num[2]), 5));
+            position.Add(new Vector3(float.Parse(num[1]), float.Parse(num[2]), z));
             //Debug.Log(num[0]);
 
             Matrix4x4 matrix = new Matrix4x4();
@@ -92,6 +93,7 @@ public class Reader : MonoBehaviour {
             matrix.SetRow(2, v2);
             matrix.SetRow(3, v3);
 
+            scale = float.Parse(num[19]);
             //Debug.Log(matrix.ToString());
 
             matrixList.Add(matrix);

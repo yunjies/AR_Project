@@ -11,42 +11,49 @@ public class CamSetup : MonoBehaviour
 {
     // DLL Import
     [DllImport("Detector")]
-    public static extern string GetAllMarkers(byte[] imgBuffer, int width, int height);
+    public static extern string GetAllMarkers(IntPtr imgBuffer, int width, int height);
 
     // Camera Setup
     public WebCamTexture webcamTexture;
-    public string deviceName;
+    private string deviceName;
     private int devId = -1;
-    Texture2D screenshot;
-
+    private Texture2D screenshot;
+    protected GCHandle m_PixelsHandle;
+    private float camera_z;
+    private Texture2D newTex;
+   
     // Screen
     public RawImage background;
 
     // Object Model
     public Transform m_MarkerModelApple;
     public Transform m_MarkerModelCorrdinate;
-    public Dictionary<int, Transform> m_MarkerModelDict = new Dictionary<int, Transform>();
+    private Dictionary<int, Transform> m_MarkerModelDict = new Dictionary<int, Transform>();
 
     // Marker
     private string markerData = "";
     private List<Matrix4x4> matrixList = new List<Matrix4x4>();
     private List<int> markerids = new List<int>();
-    Vector3 position = Vector3.zero;
+    private Vector3 position = Vector3.zero;
     private List<Vector3> m_MarkerCentralPoints = new List<Vector3>();
     private List<Transform> m_MarkerObjectList = new List<Transform>();
-    bool m_bMarkerCreated = false;
+    private float scale;
 
     // GUI
-    string signal = "initialating...";
+    private string signal;
 
 
     // Use this for initialization
     void Start()
     {
 #if UNITY_EDITOR_WIN
-        screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-        m_MarkerModelDict.Add(212, m_MarkerModelApple);
-        m_MarkerModelDict.Add(213, m_MarkerModelCorrdinate);
+        screenshot = Resources.Load("12") as Texture2D;
+        newTex = Instantiate(screenshot);
+        TextureScale.Bilinear(newTex, Screen.width, Screen.height);
+        screenshot = newTex;
+        background.texture = screenshot;
+        m_MarkerModelDict.Add(213, m_MarkerModelApple);
+        m_MarkerModelDict.Add(212, m_MarkerModelCorrdinate);
 #elif UNITY_ANDROID
         WebCamDevice[] devices = WebCamTexture.devices;
         Debug.Log("num:" + devices.Length);
@@ -71,16 +78,16 @@ public class CamSetup : MonoBehaviour
             background.texture = webcamTexture;
         }
 #endif
-
-
+        camera_z = Camera.main.GetComponent<Camera>().transform.position.z;
+        signal = "initialating...";
 
     }
 
     public void OnGUI()
     {
-        string strLabel = "Matrix: " + signal + markerData;
+        string strLabel = "Matrix: " + signal + "\n" + markerData;
 
-        GUI.Label(new Rect(10, 10, 500, 20), strLabel);
+        GUI.Label(new Rect(10, 10, 500, Screen.height), strLabel);
     }
 
     // Create a new object on the Marker based on the data passing from DLL
@@ -101,8 +108,8 @@ public class CamSetup : MonoBehaviour
             Transform m_MarkerObject = Instantiate(m_MarkerModelDict[ID], position, Quaternion.identity);
             Matrix4x4 ARM = matrix * m_MarkerObject.localToWorldMatrix;
             SetTransform.SetTransformFromMatrix(m_MarkerObject, ref ARM);
+            m_MarkerObject.localScale *= scale;
             m_MarkerObjectList.Add(m_MarkerObject);
-            m_bMarkerCreated = true;
         }
 
     }
@@ -110,55 +117,40 @@ public class CamSetup : MonoBehaviour
     // Destory all the marker at end of the frame
     public void DestroyMakerObject()
     {
-        foreach (Transform obj in m_MarkerObjectList)
+        for(int i = 0; i<m_MarkerObjectList.Count; i++)
         {
-            Destroy(obj.gameObject);
+            Destroy(m_MarkerObjectList[i].gameObject);
         }
-
-        m_bMarkerCreated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR_WIN
 
-#if UNITY_EDITOR_WIN   
-        screenshot = Resources.Load("5") as Texture2D;
-        var newTex = Instantiate(screenshot);
-        TextureScale.Bilinear(newTex, Screen.width, Screen.height);
-        screenshot = newTex;
-        background.texture = screenshot;
+        m_PixelsHandle = GCHandle.Alloc(newTex.GetPixels32(), GCHandleType.Pinned);
+        signal = "Raw image data ready.";
 
-        //buf = new CommandBuffer();
-        //buf.name = "RenderScene";
+        markerData = GetAllMarkers(m_PixelsHandle.AddrOfPinnedObject(), Screen.width, Screen.height);
+        signal = "DLL ready";
 
-        //buf.Blit(screenshot, BuiltinRenderTextureType.CurrentActive);
-        //GetComponent<Camera>().AddCommandBuffer(CameraEvent.AfterSkybox, buf);
+        m_PixelsHandle.Free();
 
-        signal = "texture ready.";
-
-
-        //buf.Dispose();
 #elif UNITY_ANDROID
-
-        screenshot.SetPixels(webcamTexture.GetPixels());
+        
+        m_PixelsHandle = GCHandle.Alloc(webcamTexture.GetPixels32(), GCHandleType.Pinned);
+        signal = "Raw image data ready.";
+        markerData = GetAllMarkers(m_PixelsHandle.AddrOfPinnedObject(), Screen.width, Screen.height);
+        signal = "DLL ready";
+        m_PixelsHandle.Free();
         
 #endif
 
-        byte[] imgBuffer = screenshot.GetRawTextureData();
-        signal = "Raw image data ready.";
+        DestroyMakerObject();
+        m_MarkerObjectList.Clear();
+        m_MarkerCentralPoints.Clear();
 
-        markerData = GetAllMarkers(imgBuffer, Screen.width, Screen.height);
-        signal = "DLL ready";
-
-        if (m_bMarkerCreated)
-        {
-            DestroyMakerObject();
-            m_MarkerObjectList.Clear();
-            m_MarkerCentralPoints.Clear();
-        }
-
-        Reader.Read(ref matrixList, ref markerids, ref markerData, ref m_MarkerCentralPoints);
+        Reader.Read(ref matrixList, ref markerids, ref markerData, ref m_MarkerCentralPoints, camera_z, ref scale);
 
         for (int i = 0; i < matrixList.Count; i++)
         {
@@ -167,9 +159,6 @@ public class CamSetup : MonoBehaviour
             int ID = markerids[i];
             CreateMarkerObject(matrix, ID, centralPoint);
         }
-
-
-
     }
 
 

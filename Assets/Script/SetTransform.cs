@@ -102,9 +102,9 @@ public class SetTransform : MonoBehaviour {
     /// <returns>
     /// Quaternion representation of rotation transform.
     /// </returns>
-    public static Quaternion ExtractRotationFromMatrix(ref Matrix4x4 m)
+    public static Quaternion ExtractRotationFromMatrix(ref Matrix4x4 matrix)
     {
-        return Quaternion.LookRotation(m.GetColumn(2), m.GetColumn(1));
+        return Quaternion.LookRotation(matrix.GetColumn(2), matrix.GetColumn(1));
     }
 
     /// <summary>
@@ -146,7 +146,7 @@ public class SetTransform : MonoBehaviour {
     {
         //transform.localPosition = ExtractTranslationFromMatrix(ref matrix);
         transform.localRotation = ExtractRotationFromMatrix(ref matrix);
-        transform.localScale = ExtractScaleFromMatrix(ref matrix);
+        //transform.localScale = ExtractScaleFromMatrix(ref matrix);
     }
 
 }
