@@ -150,14 +150,17 @@ public class CamSetup : MonoBehaviour
         m_MarkerObjectList.Clear();
         m_MarkerCentralPoints.Clear();
 
-        Reader.Read(ref matrixList, ref markerids, ref markerData, ref m_MarkerCentralPoints, camera_z, ref scale);
-
-        for (int i = 0; i < matrixList.Count; i++)
+        if (markerData != "")
         {
-            Matrix4x4 matrix = matrixList[i];
-            Vector3 centralPoint = m_MarkerCentralPoints[i];
-            int ID = markerids[i];
-            CreateMarkerObject(matrix, ID, centralPoint);
+            Reader.Read(ref matrixList, ref markerids, ref markerData, ref m_MarkerCentralPoints, camera_z, ref scale);
+
+            for (int i = 0; i < matrixList.Count; i++)
+            {
+                Matrix4x4 matrix = matrixList[i];
+                Vector3 centralPoint = m_MarkerCentralPoints[i];
+                int ID = markerids[i];
+                CreateMarkerObject(matrix, ID, centralPoint);
+            }
         }
     }
 

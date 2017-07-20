@@ -1,0 +1,21 @@
+﻿  Detector.cpp
+C:\OpenCV\build\include\opencv2/core/mat.hpp(2586): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+C:\OpenCV\build\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+C:\OpenCV\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+C:\OpenCV\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\ucrt\stdio.h(207): note: see declaration of 'fopen'
+C:\OpenCV\build\include\opencv2/imgproc.hpp(592): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+Detector.cpp(55): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\ucrt\string.h(136): note: see declaration of 'strcpy'
+Detector.cpp(68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Detector.cpp(69): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Detector.cpp(70): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Detector.cpp(71): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+     Creating library E:\AR_Detector\x64\Release\Detector.lib and object E:\AR_Detector\x64\Release\Detector.exp
+  Generating code
+  3 of 1161 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    10 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Detector.vcxproj -> E:\AR_Detector\x64\Release\Detector.dll
