@@ -1,2 +1,18 @@
-﻿  Detector.vcxproj -> E:\AR_Project\AR_Detector_DLL\x64\Debug\Detector.dll
-  Detector.vcxproj -> E:\AR_Project\AR_Detector_DLL\x64\Debug\Detector.pdb (Partial PDB)
+﻿  Detector.cpp
+c:\opencv\build\include\opencv2\core\mat.hpp(2586): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+c:\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note: see declaration of 'fopen'
+c:\opencv\build\include\opencv2\imgproc.hpp(592): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+e:\markerbasedar\ar_detector_dll\detector\detector.cpp(52): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(136): note: see declaration of 'strcpy'
+e:\markerbasedar\ar_detector_dll\detector\detector.cpp(65): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\markerbasedar\ar_detector_dll\detector\detector.cpp(66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\markerbasedar\ar_detector_dll\detector\detector.cpp(67): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\markerbasedar\ar_detector_dll\detector\detector.cpp(68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  dllmain.cpp
+     Creating library E:\MarkerbasedAR\AR_Detector_DLL\x64\Debug\Detector.lib and object E:\MarkerbasedAR\AR_Detector_DLL\x64\Debug\Detector.exp
+  Detector.vcxproj -> E:\MarkerbasedAR\AR_Detector_DLL\x64\Debug\Detector.dll
+  Detector.vcxproj -> E:\MarkerbasedAR\AR_Detector_DLL\x64\Debug\Detector.pdb (Partial PDB)

@@ -33,27 +33,27 @@ DETECTOR_API int fnDetector(void)
     return 42;
 }
 
-char* OutputFormatChar(vector<Marker> m, MarkerDetector detector, int width)
+char* OutputFormatChar(vector<Marker> m, MarkerDetector detector, int width, vector<float> fov)
 {
-	string output = "";
-	vector<Transformation> trans = detector.getTransformations();
-	for (int i = 0; i < m.size(); i++)
-	{
-		string coordinate = "";
-		for (int j = 0; j < 4; j++)
-		{
-			coordinate = ToString(m[i].points[j].x) + ToString(m[i].points[j].y);
-		}
-		string res = trans[i].getMat44string();
-		output += (ToString(m[i].id)+ "\t"  + res + coordinate + "\n");
+    string output = (ToString(fov[0]) + "\t" + ToString(fov[1]) + "\n");
+    vector<Transformation> trans = detector.getTransformations();
+    for (int i = 0; i < m.size(); i++)
+    {
+        string coordinate = "";
+        for (int j = 0; j < 4; j++)
+        {
+            coordinate += ToString(m[i].points[j].x) + "\t" + ToString(m[i].points[j].y) + "\t";
+        }
+        string res = trans[i].getMat44string();
+        output += (ToString(m[i].id) + "\t" + res + coordinate + "\n");
 
-	}
-	char* result = new char[output.length() + 1];
-	strcpy(result, output.c_str());
-	return result;
+    }
+    char* result = new char[output.length() + 1];
+    strcpy(result, output.c_str());
+    return result;
 }
 
-void readCameraParameter(Mat_<float>& camMatrix, Mat_<float>& distCoeff, double width, double height)
+vector<float> readCameraParameter(Mat_<float>& camMatrix, Mat_<float>& distCoeff, double width, double height, float imageSizeScale)
 {
 	//set cameraparam
 	int max_d = (int)max(width, height);
@@ -70,9 +70,25 @@ void readCameraParameter(Mat_<float>& camMatrix, Mat_<float>& distCoeff, double 
 	for (int i = 0; i<4; i++)
 		distCoeff(i, 0) = 0;
 
+	Size imageSize(width * imageSizeScale, height * imageSizeScale);
+	double apertureWidth = 0;
+	double apertureHeight = 0;
+	double fovx;
+	double fovy;
+	double focalLength;
+	Point2d principalPoint(0, 0);
+	double aspectratio;
+
+	calibrationMatrixValues(camMatrix, imageSize, apertureWidth, apertureHeight, fovx, fovy, focalLength, principalPoint, aspectratio);
+
+	double fovXScale = (2.0 * atan((float)(imageSize.width / (2.0 * fx)))) / (atan2((float)cx, (float)fx) + atan2((float)(imageSize.width - cx), (float)fx));
+	double fovYScale = (2.0 * atan((float)(imageSize.height / (2.0 * fy)))) / (atan2((float)cy, (float)fy) + atan2((float)(imageSize.height - cy), (float)fy));
+	
+	return vector<float> {(float)(fovx * fovXScale), (float)(fovy * fovYScale)};
+
 }
 
-extern "C" __declspec(dllexport) char* __stdcall GetAllMarkers(void* const colors, int width, int height)
+extern "C" __declspec(dllexport) char* __stdcall GetAllMarkers(void* const colors, int width, int height, float imageSizeScale)
 {
 	// safeguard - array must be not null
 	if (!colors)
@@ -85,6 +101,7 @@ extern "C" __declspec(dllexport) char* __stdcall GetAllMarkers(void* const color
 	Mat_<float> camMatrix = Mat::eye(3, 3, CV_64F);
 	Mat_<float> distCoeff = Mat::zeros(8, 1, CV_64F);
 	vector<Marker> detectedMarkers;
+	vector<float> fov;
 
 	//Mat rawImage(height, width, CV_8UC3, data);
 	//Mat src(height, width, CV_8UC3, data);
@@ -93,9 +110,9 @@ extern "C" __declspec(dllexport) char* __stdcall GetAllMarkers(void* const color
 	cvtColor(rawImage, src, 4);
 	flip(src,src,0);
 
-	readCameraParameter(camMatrix, distCoeff, width, height);
+	fov = readCameraParameter(camMatrix, distCoeff, width, height, imageSizeScale);
 	detector.processFrame(src, camMatrix, distCoeff, detectedMarkers);
-	char* content = OutputFormatChar(detectedMarkers, detector, width);
+	char* content = OutputFormatChar(detectedMarkers, detector, width, fov);
 
 	return content;
 }
